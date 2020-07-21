@@ -1,0 +1,15 @@
+{
+  "name": "form-builder",
+  "version": "1.0.0",
+  "description": "Pass object and get your form ready.",
+  "main": "index.ts",
+  "repository": "https://github.com/logvinay/form-builder.git",
+  "author": "Vinay Kumar",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "webpack": "^4.43.0",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
