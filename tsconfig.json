@@ -1,12 +1,13 @@
 {
-    "compilerOptions": {
-        "module": "umd",
-        "noImplicitAny": true,
-        "removeComments": true,
-        "preserveConstEnums": true,
-        "sourceMap": true
-    },
-    "files": [
-        "index.ts"
-    ]
+  "compilerOptions": {
+    "declaration": true,
+    "outDir": "declaration",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "umd",
+    "target": "es5",
+    "jsx": "react"
+  }
 }
