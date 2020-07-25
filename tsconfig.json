@@ -1,13 +1,15 @@
 {
   "compilerOptions": {
+    "moduleResolution": "node",    
     "declaration": true,
+    "lib": ["ES6", "DOM"],
     "outDir": "declaration",
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "noImplicitAny": true,
-    "module": "umd",
     "target": "es5",
-    "jsx": "react"
+    "jsx": "react",
+    "alwaysStrict": true
   }
 }
