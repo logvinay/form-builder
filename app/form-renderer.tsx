@@ -1,6 +1,8 @@
-import {render} from "react-dom";
+import { render } from "react-dom";
 import * as React from "react";
-import {Form} from "./form";
+import { Form } from "./form";
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
 
 export class FormRenderer {
     private _element: HTMLElement;
@@ -9,7 +11,14 @@ export class FormRenderer {
         this._props = props;
         this._element = document.getElementById(this._props.id);
     }
+    init() {
+        store.dispatch({ type: "INIT_STATE", payload: this._props.formData });
+    }
     render() {
-        render(<Form {...this._props} />, this._element);
+        render(
+            <Provider store={store}>
+                <Form />
+            </Provider>
+            , this._element);
     }
 }

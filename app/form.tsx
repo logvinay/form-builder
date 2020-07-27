@@ -1,13 +1,23 @@
 import * as React from "react";
-import { store, IFormData } from "./store";
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
+import { IFormData } from "./models/IFormData";
 
-export interface IFormProps {
-  formData: IFormData
-}
 
-export function Form(props: IFormProps) {
+function ReactForm({ state, dispatch }: any) {
   return (
     <div>
     </div>
   );
 }
+
+const mapStateWithProps = (state: IFormData) => {
+}
+
+const mapDispatchWithProps = (dispatch: Dispatch) => {
+
+}
+
+const Form = connect(mapStateWithProps, mapDispatchWithProps)(ReactForm);
+
+export { Form };
