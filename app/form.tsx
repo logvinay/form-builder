@@ -12,6 +12,7 @@ function ReactForm({ state, dispatch }: any) {
 }
 
 const mapStateWithProps = (state: IFormData) => {
+  
 }
 
 const mapDispatchWithProps = (dispatch: Dispatch) => {
