@@ -1,13 +1,15 @@
-import ReactDOM from "react-dom";
-import React from "react";
-import {Form, IFormProps} from "./form";
+import {render} from "react-dom";
+import * as React from "react";
+import {Form} from "./form";
 
 export class FormRenderer {
     private _element: HTMLElement;
+    private _props: any;
     constructor(props: any) {
-        this._element = document.getElementById(props.id);
+        this._props = props;
+        this._element = document.getElementById(this._props.id);
     }
     render() {
-        ReactDOM.render(<Form />, this._element);
+        render(<Form {...this._props} />, this._element);
     }
 }

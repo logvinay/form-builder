@@ -5,11 +5,9 @@
     "lib": ["ES6", "DOM"],
     "outDir": "declaration",
     "allowJs": true,
-    "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "noImplicitAny": true,
     "target": "es5",
     "jsx": "react",
-    "alwaysStrict": true
   }
 }

@@ -1,23 +1,13 @@
-import React, {useState, useEffect} from "react";
+import * as React from "react";
+import { store, IFormData } from "./store";
 
 export interface IFormProps {
-
+  formData: IFormData
 }
 
 export function Form(props: IFormProps) {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    // get called componentDidMount and componentDidUpdate
-    return () => {
-
-    }
-  })
   return (
     <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
     </div>
   );
 }
