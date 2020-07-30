@@ -10,10 +10,16 @@ export class FormRenderer {
     constructor(props: any) {
         this._props = props;
         this._element = document.getElementById(this._props.id);
+        this.init();
+    }
+    registerAllComponents() {
+
     }
     init() {
         store.dispatch({ type: "INIT_STATE", payload: this._props.formData });
+        this.registerAllComponents();
     }
+
     render() {
         render(
             <Provider store={store}>
