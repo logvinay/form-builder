@@ -19,7 +19,7 @@ export interface IControlProps extends IReduxState {
 function Control(controlProps: IControlProps) {
     return <div>
         <label>
-            {controlProps?.localization?.strings?.[controlProps.property.name] && controlProps.property.name}
+            {controlProps?.localization?.strings?.[controlProps.property.name] || controlProps.property.name}
         </label>
         {React.createElement(Controls.instance.getControl(controlProps.property.type), controlProps)}
     </div>

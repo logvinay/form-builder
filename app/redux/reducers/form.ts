@@ -2,30 +2,45 @@ import { IFormData } from "../../models/IFormData";
 import { IAction } from "../../models/IAction";
 
 const form = (state: IFormData = {}, action: IAction) => {
+    function setValue(prop: any, value: any) {
+        if (!state.value) {
+            state.value = {};
+        }  
+        state.value[prop] = value;
+        if (!state.value[prop]) {
+            delete state.value[prop];
+        }
+    }
+    console.log("Previous Value", state.value);
     switch (action.type) {
         case "INIT_STATE":
-            return {...action.payload};
+            state = {...action.payload};
         case "CONTROL_CHANGE": {
-            state.value[action.payload.property] = action.payload.value
-            return {...state};
+            // setValue(action.payload.property, action.payload.value);
+            break;
         }
         case "CONTROL_BLUR": {
-            state.value[action.payload.property] = action.payload.value
-            return {...state};
+            setValue(action.payload.property, action.payload.value);
+            break;
         }
         case "CONTROL_INPUT": {
-            state.value[action.payload.property] = action.payload.value
-            return {...state};
+            // if (!state.value) {
+            //     state.value = {};
+            // }
+            // state.value[action.payload.property] = action.payload.value
+            // return {...state};
         }
         case "FORM_SAVE" : {
-            return {...state};
+            break;
         }
         case "FORM_VALIDATE": {
-            return {...state};
+            break;
         }
         default:
-           return state;
+           break;
     }
+    ((window as any).state) = state;
+    return {...state};
 }
 
 export {form};
