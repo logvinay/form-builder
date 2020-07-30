@@ -18,7 +18,7 @@ export function Input(props: IInputProps) {
         type="text"
         value={props.value}
         onChange={(event: any) => {props.onChange(props.property.name, event)}}
-        onBlur={(event: any) => {props.onChange(props.property.name, event)}}
-        onInput = {(event: any) => {props.onChange(props.property.name, event)}} />
+        onBlur={(event: any) => {props.onBlur(props.property.name, event)}}
+        onInput = {(event: any) => {props.onInput(props.property.name, event)}} />
     </div>;
 }
