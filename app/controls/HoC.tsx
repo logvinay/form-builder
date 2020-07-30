@@ -5,38 +5,64 @@ import { IFormData, IPropMetadata, ILocalization } from "../models/IFormData";
 import { Controls } from "./Controls";
 
 export interface IReduxState {
-    localization?: ILocalization
+    localization?: ILocalization,
+    onChange?: (property: any, event: Event) => void;
+    onInput?: (property: any, event: Event) => void;
+    onBlur?: (property: any, event: Event) => void;
 }
 
-export interface IControlProps extends IReduxState {    
+export interface IControlProps extends IReduxState {
     property: IPropMetadata,
+    value: any;
 }
 
-function Contol({property, localization}: IControlProps) {
+function Control(controlProps: IControlProps) {
     return <div>
         <label>
-            {localization.strings[property.name]}
+            {controlProps?.localization?.strings?.[controlProps.property.name] && controlProps.property.name}
         </label>
-        <div>
-            {React.createElement(Controls.instance.getControl(property.type), property)}
-        </div>
+        {React.createElement(Controls.instance.getControl(controlProps.property.type), controlProps)}
     </div>
+}
+
+const onChange = (property: any, event: Event, dispatch: Dispatch) => {
+    let value = (event.target as any).value;
+    dispatch({
+        type: "CONTROL_CHANGE",
+        payload: {property, value}
+    });
+}
+
+const onBlur = (property: any, event: Event, dispatch: Dispatch) => {
+    let value = (event.target as any).value;
+    dispatch({
+        type: "CONTROL_BLUR",
+        payload: {property, value}
+    });
+}
+
+const onInput = (property: any, event: Event, dispatch: Dispatch) => {
+    let value = (event.target as any).value;
+    dispatch({
+        type: "CONTROL_INPUT",
+        payload: {property, value}
+    });
 }
 
 const mapStateWithProps = (state: { form: IFormData }) => {
     return {
-        state: state.form
+        localization: state.form.currentLocalization
     };
 }
 
 const mapDispatchWithProps = (dispatch: Dispatch) => {
     return {
-        onBlur: (value: any) => dispatch({ type: "INPUT_BLUR" }),
-        onChange: (value: any) => dispatch({ type: "INPUT_CHANGE" }),
-        onInput: (value: any) => dispatch({ type: "INPUT_CONTROL" })
+        onBlur: (property: any, event: any) => onBlur(property, event, dispatch),
+        onChange: (property: any, event: any) => onChange(property, event, dispatch),
+        onInput: (property: any, event: any) => onInput(property, event, dispatch)
     }
 }
 
-const HOC = connect(mapStateWithProps, mapDispatchWithProps)(Contol);
+const HOC = connect(mapStateWithProps, mapDispatchWithProps)(Control);
 
 export { HOC };

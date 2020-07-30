@@ -3,6 +3,8 @@ import * as React from "react";
 import { Form } from "./form";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
+import { Controls } from "./controls/Controls";
+import { Input } from "./controls/LoC/input";
 
 export class FormRenderer {
     private _element: HTMLElement;
@@ -13,8 +15,9 @@ export class FormRenderer {
         this.init();
     }
     registerAllComponents() {
-
+        Controls.instance.register("text", Input);
     }
+    
     init() {
         store.dispatch({ type: "INIT_STATE", payload: this._props.formData });
         this.registerAllComponents();
