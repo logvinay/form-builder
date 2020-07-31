@@ -2,7 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { IFormData } from "./models/IFormData";
-import { HOC } from "./controls/HOC";
+import { HOC } from "./controls/hoc";
 
 export interface IReduxFormProps {
   form?: IFormData;

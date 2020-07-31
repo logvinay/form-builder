@@ -3,8 +3,8 @@ import * as React from "react";
 import { Form } from "./form";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
-import { Controls } from "./controls/Controls";
-import { Input } from "./controls/LoC/input";
+import { Controls } from "./controls/utils";
+import { Input } from "./controls/loc";
 
 export class FormRenderer {
     private _element: HTMLElement;

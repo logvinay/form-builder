@@ -1,5 +1,6 @@
 import * as  React from "react";
 import { IPropMetadata, ILocalization } from "../../models/IFormData";
+import { getId } from "../utils";
 
 interface IInputProps {
     property: IPropMetadata,
@@ -13,6 +14,7 @@ interface IInputProps {
 export function Input(props: IInputProps) {
     return <div>
         <input
+        aria-labelledby={getId(props.property.name)}
         id={props.property.name}
         disabled={props.property.disabled}
         type="text"
