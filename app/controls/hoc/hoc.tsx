@@ -19,7 +19,8 @@ export interface IControlProps extends IReduxState {
 function Control(props: IControlProps) {
     return <div>
         <label id={getId(props.property.name)}>
-            {props?.localization?.strings?.[props.property.name] || props.property.name}
+            <span>{props?.localization?.strings?.[props.property.name] || props.property.name}</span>
+            {props.property.required && <span style={{color: "red", fontSize: "0.8em"}}>*</span>}
         </label>
         {React.createElement(Controls.instance.getControl(props.property.type), props)}
     </div>

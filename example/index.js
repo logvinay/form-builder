@@ -1,8 +1,8 @@
 var index = new formbuilderzero.FormRenderer({id: "app", formData: {
     properties: [
-        {name: "name", type: "text"},
-        {name: "age", type: "text"},
-        {name: "data", type: "text"},
+        {name: "name", type: "text", required: true},
+        {name: "age", type: "text", required: true},
+        {name: "data", type: "text", required: true},
         {name: "malt", type: "text"}
     ]
 }});

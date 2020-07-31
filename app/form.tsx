@@ -23,9 +23,7 @@ function ReactForm(props: IReactFormProps) {
           return <HOC key={property.name + index} property={property} value={form?.value?.[property.name]} />
         })
       }
-      <div>
-        Save
-      </div>
+      <button>Save</button>
     </div>
   );
 }
