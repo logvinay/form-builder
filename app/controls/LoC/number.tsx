@@ -1,9 +1,8 @@
 import * as  React from "react";
 import { IPropMetadata, ILocalization } from "../../models/IFormData";
-import { getId } from "../utils";
-import { Controls } from "../utils";
+import { getId, Controls } from "../utils";
 
-interface IInputProps {
+interface INumberProps {
     property: IPropMetadata,
     localization: ILocalization,
     onChange?: (property: any, event: Event) => void;
@@ -12,17 +11,27 @@ interface IInputProps {
     value?: any;
 }
 
-export function Input(props: IInputProps) {
+export function Number(props: INumberProps) {
+    const onBlurAndChange = (event: any) => {
+        var value = 0;
+        if (props.property.type == "int") {
+            value = parseInt(event.target.value);
+        }
+        else if (props.property.type == "decimal") {
+            value = parseFloat(event.target.value);
+        }
+        props.onChange(props.property.name, value as any);
+    }
     return <div>
         <input
             aria-labelledby={getId(props.property.name)}
             required={props.property.required}
             id={props.property.name}
             disabled={props.property.disabled}
-            type="text"
+            type="number"
             value={props.value || ""}
-            onChange={(event: any) => { props.onChange(props.property.name, event.target.value) }}
-            onBlur={(event: any) => { props.onBlur(props.property.name, event.target.value) }}
+            onChange={onBlurAndChange}               
+            onBlur={onBlurAndChange}
         />
     </div>;
 }

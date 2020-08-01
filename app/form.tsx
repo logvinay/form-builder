@@ -2,7 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { IFormData } from "./models/IFormData";
-import { HOC } from "./controls/hoc";
+import { Control } from "./controls/hoc";
 
 export interface IReduxFormProps {
   form?: IFormData;
@@ -20,7 +20,8 @@ function ReactForm(props: IReactFormProps) {
     <div className="form">
       {
         form.properties.map((property, index) => {
-          return <HOC key={property.name + index} property={property} value={form?.value?.[property.name]} />
+          const value = form && form.value && form.value[property.name] && form.value[property.name].value;
+          return <Control key={property.name + index} property={property} value={value} />
         })
       }
       <button>Save</button>
