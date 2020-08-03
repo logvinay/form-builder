@@ -12,7 +12,7 @@ var configuration = (env, argv) => {
 
     console.info("Starting Build..");
 
-    var libraryName = 'formbuilderzero',
+    var libraryName = 'moderndesign',
         plugins = [],
         isProductionBuild = env.production;
 
